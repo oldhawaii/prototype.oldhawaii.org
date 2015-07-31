@@ -21,6 +21,7 @@
                 height: 100%;
             }
         </style>
+        <script src="//load.sumome.com/" data-sumo-site-id="b8e1e389dcf6c769a72b00204a7d539b276c93bcd634f1810e8084a06b9fa45c" async="async"></script>
     </head>
     <body>
         <div id="map"></div>
@@ -42,7 +43,7 @@
                 map.setView(
                     new L.LatLng(hnl_coordinates["latitude"],
                         hnl_coordinates["longitude"]), 16);
-                L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
                     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
                     maxZoom: 18
                 }).addTo(map);
