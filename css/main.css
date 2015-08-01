@@ -273,3 +273,17 @@ textarea {
     }
 }
 
+
+#popular-container  {
+  position: absolute;
+  top: 10px;
+  width: 210px;
+  right: 10px;
+  background: #eee;
+  padding: 0 10px;
+  z-index:99999;
+}
+
+#popular-container h2 {
+  font-size: 1em;
+}
