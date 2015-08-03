@@ -33,6 +33,7 @@
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
         <script src="js/leaflet.js"></script>
+        <script src="data/hawaii_block_coordinates.js"></script>
         <script type="text/javascript">
             var map;
 
@@ -42,9 +43,9 @@
             };
 
             function initialize_map() {
-                map = new L.Map('map');
+                map = L.map('map');
                 map.setView(
-                    new L.LatLng(hnl_coordinates["latitude"],
+                        L.latLng(hnl_coordinates["latitude"],
                         hnl_coordinates["longitude"]), 16);
                 L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
                     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -52,7 +53,38 @@
                 }).addTo(map);
             }
 
+            function parse_and_create_latlngs()
+            {
+                var latlngs = [];
+                for (var key in hawaii_lat_lngs)
+                {
+                    latlngs.push(parse_and_create_latlng(key));
+                }
+                return latlngs;
+            }
+
+            function parse_and_create_latlng(latlng_as_string)
+            {
+                var ll = latlng_as_string.split(",");
+                return L.latLng(
+                    parseFloat(ll[0]),
+                    parseFloat(ll[1]));
+            }
+
+            function create_markers(map, latlngs) {
+                for (var i = 0; i < latlngs.length; i++) {
+                    create_marker(map, latlngs[i]);
+                }
+            }
+
+            function create_marker(map, latlng) {
+                var marker = L.circleMarker(latlng, {radius: 4});
+                map.addLayer(marker);
+            }
+
             initialize_map();
+            create_markers(map, parse_and_create_latlngs());
+            // Will need to implement idle function marker handler at some point
         </script>
     </body>
 </html>
