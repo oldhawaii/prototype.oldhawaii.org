@@ -29,9 +29,13 @@
             <h2>Popular</h2>
             <div id="popular"></div>
         </div>
+        <div id="place-overlay" class="mfp-hide white-popup">
+            <div class="place-template">
+            </div>
+        </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-2.1.4.min.js"><\/script>')</script>
-        <script src="js/vendor/jquery.magnific-popup.js"></script>
+        <script src="js/vendor/jquery.magnific-popup.min.js"></script>
         <script src="js/vendor/leaflet.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
@@ -80,8 +84,17 @@
             }
 
             function create_marker(map, latlng) {
-                var marker = L.circleMarker(latlng, {radius: 4});
-                map.addLayer(marker);
+                var marker = L.circleMarker(latlng, {radius: 5})
+                              .addTo(map)
+                              .on('click', function(e) {
+                                  $('#place-overlay .place-template').text("Hello " + e.latlng);
+                                  $.magnificPopup.open({
+                                      items: {
+                                        src: '#place-overlay',
+                                        type: 'inline'
+                                      }
+                                    });
+                              });
             }
 
             initialize_map();

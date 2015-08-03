@@ -281,9 +281,17 @@ textarea {
   right: 10px;
   background: #eee;
   padding: 0 10px;
-  z-index:99999;
+  z-index:400;
 }
 
 #popular-container h2 {
   font-size: 1em;
+}
+
+#place-overlay {
+  z-index:500;
+}
+
+#place-overlay .place-template {
+  background-color:white;
 }
