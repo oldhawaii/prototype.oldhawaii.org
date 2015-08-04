@@ -290,8 +290,10 @@ textarea {
 
 #place-overlay {
   z-index:500;
+  background-color:black;
 }
 
 #place-overlay .place-template {
+  padding: 1em;
   background-color:white;
 }

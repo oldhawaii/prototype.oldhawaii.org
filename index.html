@@ -30,7 +30,10 @@
             <div id="popular"></div>
         </div>
         <div id="place-overlay" class="mfp-hide white-popup">
-            <div class="place-template">
+            <img id="static-map-image" src="images/blank.gif" width=150 height=150 />
+            <div id="places-carousel">
+                <div class="place-template">
+                </div>
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -87,7 +90,7 @@
                 var marker = L.circleMarker(latlng, {radius: 5})
                               .addTo(map)
                               .on('click', function(e) {
-                                  $('#place-overlay .place-template').text("Hello " + e.latlng);
+                                  populate_template($('#place-overlay'), e.latlng);
                                   $.magnificPopup.open({
                                       items: {
                                         src: '#place-overlay',
@@ -95,6 +98,12 @@
                                       }
                                     });
                               });
+            }
+
+            function populate_template($place_template, latlng)
+            {
+                var static_map_image_url = "https://avatars1.githubusercontent.com/u/57014?v=3&s=460";
+                $place_template.find('#static-map-image').attr('src', static_map_image_url);
             }
 
             initialize_map();
