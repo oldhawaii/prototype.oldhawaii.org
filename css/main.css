@@ -288,12 +288,20 @@ textarea {
   font-size: 1em;
 }
 
-#place-overlay {
+#places-overlay {
   z-index:500;
   background-color:black;
 }
 
-#place-overlay .place-template {
+#places-overlay .place-template {
   padding: 1em;
   background-color:white;
+}
+
+#places-overlay #places-carousel {
+  padding: 1em;
+}
+
+#places-overlay #places-carousel img {
+  padding: 1em;
 }

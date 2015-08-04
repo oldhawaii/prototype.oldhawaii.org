@@ -29,9 +29,10 @@
             <h2>Popular</h2>
             <div id="popular"></div>
         </div>
-        <div id="place-overlay" class="mfp-hide white-popup">
+        <div id="places-overlay" class="mfp-hide white-popup">
             <img id="static-map-image" src="images/blank.gif" width=150 height=150 />
             <div id="places-carousel">
+                <div class="thumbnails"></div>
                 <div class="place-template">
                 </div>
             </div>
@@ -87,23 +88,37 @@
             }
 
             function create_marker(map, latlng) {
-                var marker = L.circleMarker(latlng, {radius: 5})
-                              .addTo(map)
+                var marker = L.circleMarker(latlng, {radius: 5});
+                marker.latitude = latlng.lat;
+                marker.longitude = latlng.lng;
+                        marker.addTo(map)
                               .on('click', function(e) {
-                                  populate_template($('#place-overlay'), e.latlng);
+                                  populate_template($('#places-overlay'), e.target.latitude, e.target.longitude);
                                   $.magnificPopup.open({
                                       items: {
-                                        src: '#place-overlay',
+                                        src: '#places-overlay',
                                         type: 'inline'
                                       }
                                     });
                               });
             }
 
-            function populate_template($place_template, latlng)
+            function populate_template($place_template, latitude, longitude)
             {
                 var static_map_image_url = "https://avatars1.githubusercontent.com/u/57014?v=3&s=460";
                 $place_template.find('#static-map-image').attr('src', static_map_image_url);
+
+                var lat_lng_as_string = latitude + "," + longitude;
+                var data_file = "/data/places/" + lat_lng_as_string + ".json";
+                $.getJSON(data_file, function(json) {
+                    for (var i = 0; i < hawaii_lat_lngs[lat_lng_as_string].length; i++)
+                    {
+                        var item_id = hawaii_lat_lngs[lat_lng_as_string][i];
+                        var item_metadata = json[item_id];
+                        $place_template.find('#places-carousel > div.thumbnails').append('<img src="' + item_metadata['thumbnail_url'] + '"></img>');
+                        console.log('<img src="' + item_metadata['thumbnail_url'] + '"></img>');
+                    }
+                });
             }
 
             initialize_map();
