@@ -295,7 +295,6 @@ textarea {
 
 #places-overlay .place-template {
   padding: 1em;
-  background-color:white;
 }
 
 #places-overlay #places-carousel {
@@ -303,5 +302,8 @@ textarea {
 }
 
 #places-overlay #places-carousel img {
-  padding: 1em;
+  margin: 0 10px 10px 0;
+  padding:3px;
+  border: 1px solid #ff0;
+  background-color: #fff;
 }

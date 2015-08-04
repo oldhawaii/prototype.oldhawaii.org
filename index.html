@@ -105,7 +105,9 @@
 
             function populate_template($place_template, latitude, longitude)
             {
-                var static_map_image_url = "https://avatars1.githubusercontent.com/u/57014?v=3&s=460";
+                $place_template.find('#places-carousel > div.thumbnails').empty();
+
+                var static_map_image_url = "";
                 $place_template.find('#static-map-image').attr('src', static_map_image_url);
 
                 var lat_lng_as_string = latitude + "," + longitude;
