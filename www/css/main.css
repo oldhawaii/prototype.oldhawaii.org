@@ -311,29 +311,36 @@ div.leaflet-left .leaflet-control {
 #places-overlay {
   z-index:500;
   background-color:black;
+  overflow: auto;
+  zoom: 1;
 }
 
-#places-overlay .mfp-close-btn-in .mfp-close {
-  color:#fff;
+.mfp-container .mfp-content {
+  vertical-align: baseline;
 }
 
-#places-overlay .place-template {
-  padding: 1em;
+.mfp-close-btn-in .mfp-close {
+  color:#fff !important;
 }
 
-#places-overlay #places-carousel {
-  padding: 1em;
+#places-overlay #place-metadata {
   float:left; 
+  margin:1em;
+  height:400px;
+}
+
+#places-overlay #place-carousel {
+  float:left; 
+  margin:1em 1em 1em 0;
+  width:75%;
 }
 
 #places-overlay #static-map-image {
-  margin: 1em;
-  float:left;
+  border: 1px solid #fff;
 }
 
-#places-overlay #places-carousel img {
-  margin: 0 10px 10px 0;
-  padding:3px;
-  border: 1px solid #ff0;
-  background-color: #fff;
+#places-overlay #place-carousel img {
+  margin:0 7px 7px 0;
+  border: 1px solid #fff;
+  vertical-align:none;
 }

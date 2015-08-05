@@ -31,11 +31,12 @@
             <div id="popular"></div>
         </div>
         <div id="places-overlay" class="mfp-hide white-popup">
-            <img id="static-map-image" width=200 height=200 />
-            <div id="places-carousel">
+            <div id="place-metadata">
+                <img id="static-map-image" width=200 height=200 />
+                <div id="place-description"></div>
+            </div>
+            <div id="place-carousel">
                 <div class="thumbnails"></div>
-                <div class="place-template">
-                </div>
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -115,7 +116,7 @@
 
             function populate_template($place_template, latitude, longitude)
             {
-                $place_template.find('#places-carousel > div.thumbnails').empty();
+                $place_template.find('#place-carousel > div.thumbnails').empty();
 
                 var static_map_image_url = "https://api.mapbox.com/v4/mapbox.streets/pin-s-circle+006633(" + longitude + "," + latitude + ")/" + longitude + "," + latitude + ",16/300x300.png?access_token=pk.eyJ1Ijoicnlhbmthbm5vIiwiYSI6IjNjZmMyNmJjM2UwYTAxMzk5MWY2MzY4YzEwZjI3NjAzIn0.QFfwVBJ4WA_abXaGDbpSjg";
                 $place_template.find('#static-map-image').attr('src', static_map_image_url);
@@ -127,8 +128,8 @@
                     {
                         var item_id = hawaii_lat_lngs[lat_lng_as_string][i];
                         var item_metadata = json[item_id];
-                        $place_template.find('#places-carousel > div.thumbnails').append('<img src="' + item_metadata['thumbnail_url'] + '"></img>');
-                        console.log('<img src="' + item_metadata['thumbnail_url'] + '"></img>');
+                        $place_template.find('#place-carousel > div.thumbnails').append('<img src="' + item_metadata['thumbnail_url'] + '"></img>');
+                        // $place_template.find('#place-description').append(item_metadata["description"]);
                     }
                 });
             }
