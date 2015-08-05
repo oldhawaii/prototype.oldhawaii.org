@@ -313,12 +313,22 @@ div.leaflet-left .leaflet-control {
   background-color:black;
 }
 
+#places-overlay .mfp-close-btn-in .mfp-close {
+  color:#fff;
+}
+
 #places-overlay .place-template {
   padding: 1em;
 }
 
 #places-overlay #places-carousel {
   padding: 1em;
+  float:left; 
+}
+
+#places-overlay #static-map-image {
+  margin: 1em;
+  float:left;
 }
 
 #places-overlay #places-carousel img {

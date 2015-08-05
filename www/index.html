@@ -31,7 +31,7 @@
             <div id="popular"></div>
         </div>
         <div id="places-overlay" class="mfp-hide white-popup">
-            <img id="static-map-image" src="images/blank.gif" width=150 height=150 />
+            <img id="static-map-image" width=200 height=200 />
             <div id="places-carousel">
                 <div class="thumbnails"></div>
                 <div class="place-template">
@@ -117,7 +117,7 @@
             {
                 $place_template.find('#places-carousel > div.thumbnails').empty();
 
-                var static_map_image_url = "";
+                var static_map_image_url = "https://api.mapbox.com/v4/mapbox.streets/pin-s-circle+006633(" + longitude + "," + latitude + ")/" + longitude + "," + latitude + ",16/300x300.png?access_token=pk.eyJ1Ijoicnlhbmthbm5vIiwiYSI6IjNjZmMyNmJjM2UwYTAxMzk5MWY2MzY4YzEwZjI3NjAzIn0.QFfwVBJ4WA_abXaGDbpSjg";
                 $place_template.find('#static-map-image').attr('src', static_map_image_url);
 
                 var lat_lng_as_string = latitude + "," + longitude;
