@@ -276,21 +276,19 @@ textarea {
 
 #logo {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  height:87px;
-  width: 166px;
+  top:10px;
+  left:30px;
+  height:125px;
+  width:250px;
   padding:10px;
   background-image:url('/img/logo.png');
   background-repeat: no-repeat;
-  background-color:#f6f6f6;
-  background-position: center; 
-  border:2px solid #006633;
+  background-size: 250px 125px;
   z-index:999;
 }
 
 div.leaflet-left .leaflet-control {
-  margin-top:127px;
+  margin-top:50px;
 }
 
 #popular-container  {
